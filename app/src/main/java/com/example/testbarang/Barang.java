@@ -1,25 +1,23 @@
 package com.example.testbarang;
 
-import androidx.annotation.NonNull;
-
 import java.io.Serializable;
+
+import androidx.annotation.NonNull;
 
 public class Barang implements Serializable {
     private String kode;
     private String nama;
 
-    public Barang(String kd, String nm) {
-        kode = kd;
-        nama = nm;
-    }
+    public Barang() {
 
+    }
 
     public String getKode() {
         return kode;
     }
 
-    public void setKode(String kode) {
-        this.kode = kode;
+    public void setKode(String kd) {
+        this.kode = kd;
     }
 
     public String getNama() {
@@ -33,6 +31,12 @@ public class Barang implements Serializable {
     @NonNull
     @Override
     public String toString() {
-        return " " + kode + "\n" + " " + nama;
+        return " " + kode + "\n" +
+                " " + nama;
+    }
+
+    public Barang(String kd, String nm) {
+        kode = kd;
+        nama = nm;
     }
 }

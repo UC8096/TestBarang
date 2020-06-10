@@ -7,7 +7,7 @@
     <string name="enama">Nama Barang</string>
     <string name="txtjudul1">ACTIVITAS</string>
     <string name="txtjudul2">Penambahan Data</string>
-    <string name="txtjudul3">Data barang</string>
+    <string name="txtJudul3">Data Barang</string>
     <string name="txtkosong"></string>
 
 </resources>
