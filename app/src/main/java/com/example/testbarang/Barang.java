@@ -7,17 +7,28 @@ import androidx.annotation.NonNull;
 public class Barang implements Serializable {
     private String kode;
     private String nama;
+    private String key;
+
 
     public Barang() {
 
     }
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+
     public String getKode() {
         return kode;
     }
 
-    public void setKode(String kd) {
-        this.kode = kd;
+    public void setKode(String kode) {
+        this.kode = kode;
     }
 
     public String getNama() {

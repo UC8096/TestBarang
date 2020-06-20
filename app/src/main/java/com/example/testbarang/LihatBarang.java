@@ -6,9 +6,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -17,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class LihatBarang extends AppCompatActivity {
+public class LihatBarang extends AppCompatActivity implements AdapterLihatBarang.dataListener {
 
     private DatabaseReference database;
     private RecyclerView rvView;
@@ -46,7 +49,7 @@ public class LihatBarang extends AppCompatActivity {
                 for (DataSnapshot notDataSnapshot : dataSnapshot.getChildren()) {
 
                     Barang barang = notDataSnapshot.getValue(Barang.class);
-                    barang.setKode(notDataSnapshot.getKey());
+                    barang.setKey(notDataSnapshot.getKey());
 
                     daftarBarang.add(barang);
 
@@ -54,6 +57,8 @@ public class LihatBarang extends AppCompatActivity {
 
                 adapter = new AdapterLihatBarang(daftarBarang, LihatBarang.this);
                 rvView.setAdapter(adapter);
+
+
             }
 
             @Override
@@ -67,5 +72,18 @@ public class LihatBarang extends AppCompatActivity {
 
     public static Intent getActIntent(Activity activity) {
         return new Intent(activity, LihatBarang.class);
+    }
+
+    public void onDeleteData(Barang barang) {
+
+        if (database != null) {
+            database.child("Barang").child(barang.getKey()).removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Toast.makeText(LihatBarang.this, "Data berhasil di hapus", Toast.LENGTH_LONG).show();
+
+                }
+            });
+        }
     }
 }

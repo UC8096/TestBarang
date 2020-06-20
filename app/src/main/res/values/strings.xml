@@ -9,5 +9,6 @@
     <string name="txtjudul2">Penambahan Data</string>
     <string name="txtJudul3">Data Barang</string>
     <string name="txtkosong"></string>
+    <string name="bUpdate">Update</string>
 
 </resources>
